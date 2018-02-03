@@ -37,7 +37,6 @@ class Home extends CI_Controller {
 
 		$title = $this->conf_model->get_conf("site_name");
 		$description = $this->conf_model->get_conf("site_desc");
-		$this->section = $this->conf_model->get_section();
 
 		$this->title = $title[0]["value"];
 		$this->description = $description[0]["value"];

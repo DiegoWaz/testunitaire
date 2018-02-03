@@ -78,46 +78,6 @@ public function get_list_contenue($limit)
 	return $query->result_array();
 }	
 
-public function get_list_news_section($section, $limit)
-{
-
-	$this->db->where('isdelete', 0);
-	$this->db->order_by("updated_at", "desc");
-	$query = $this->db->get_where('posts', array(
-		'section' => $section
-	), $limit);
-	return $query->result_array();
-
-}
-
-public function getPostTeam($id)
-{
-	$this->db->select('id_teams');
-	$query = $this->db->get_where('posts',
-		array(
-			'id' => $id
-		));
-	return $query->result_array();
-}
-
-public function getPostMatch($id)
-{
-	$this->db->select('id_matchs');
-	$query = $this->db->get_where('posts',
-		array(
-			'id' => $id
-		));
-	return $query->result_array();
-}
-
-public function getPostMatchLimit($id, $limit)
-{
-	$query = $this->db->get_where('posts',
-		array(
-			'id_matchs' => $id
-		), $limit);
-	return $query->result_array();
-}
 
 public function get_une_news($limit)
 {
@@ -127,20 +87,7 @@ public function get_une_news($limit)
 	$query = $this->db->get_where('posts', array('une' => 1), $limit);
 	return $query->result_array();
 
-}			
-
-public function get_une_news_section($section, $limit)
-{
-
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get_where('posts', array(
-		'une' => 1,
-		'section' => $section
-	), $limit);
-
-	return $query->result_array();
-
-}			
+}					
 
 public function get_news($slug)
 {
@@ -173,33 +120,6 @@ public function get_listNameRubrique()
 	return $query->result_array();
 }
 
-public function get_listNameSection()
-{
-	$this->db->select('name');
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get('section');
-	return $query->result_array();
-}
-
-public function addSection($section, $slug) {
-
-	$data = array(
-		'name'   => $section,
-		'slug'   => $slug
-	);
-	return $this->db->insert('section', $data);
-}	
-
-public function editSection($id, $section, $slug) {
-
-	$data = array(
-		'name'   => $section,
-		'slug'   => $slug
-	);
-	$this->db->where('id', $id);
-	return $this->db->update('section', $data);
-}		
-
 public function editRubrique($id, $rubrique, $slug) {
 
 	$data = array(
@@ -219,26 +139,6 @@ public function deleteForm($id, $table) {
 	return $this->db->update($table, $data);
 }
 
-public function get_section($id)
-{		
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get_where('posts',
-		array(
-			'section' => $id,
-		));
-	return $query->result_array();
-}		
-
-public function get_section_slug($slug)
-{		
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get_where('section',
-		array(
-			'slug' => $slug,
-		));
-	return $query->result_array();
-}	
-
 public function get_oneRubrique($id)
 {		
 	$this->db->where('isdelete', 0);
@@ -249,12 +149,6 @@ public function get_oneRubrique($id)
 	return $query->result_array();
 }
 
-public function get_ListSection()
-{
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get('section');
-	return $query->result_array();
-}
 
 public function addRubrique($rubrique, $slug) {
 
@@ -263,12 +157,6 @@ public function addRubrique($rubrique, $slug) {
 		'slug'   => $slug
 	);
 	return $this->db->insert('rubrique_news', $data);
-}
-
-public function get_news_match(/*$id,*/ $limit)
-{
-	$query = $this->db->get('posts', /*array('idmatch' => $id),*/ $limit);
-	return $query->result_array();
 }
 
 public function get_news_previous($id)
@@ -306,14 +194,6 @@ public function decode_post($text)
 	return $text;
 }
 
-public function players($team)
-{
-	$query = $this->db->get_where('players', array(
-		'clubactuel' => $team
-	));
-	return $query->result_array();
-}
-
 public function addTodoListNews($idpseudo, $title, $status, $link, $comment, $important) {
 
 	$data = array(
@@ -328,32 +208,9 @@ public function addTodoListNews($idpseudo, $title, $status, $link, $comment, $im
 	);
 	return $this->db->insert('todoListNews', $data);
 }	
+		
 
-public function getPostPlayer($id)
-{
-	$this->db->select('id_players');
-	$this->db->where('isdelete', 0);
-
-	$query = $this->db->get_where('posts',
-		array(
-			'id' => $id
-		)
-	);
-	return $query->result_array();
-}		
-
-public function getPostMercato($id)
-{
-	$this->db->where('is_delete', 0);
-	$query = $this->db->get_where('mercato',
-		array(
-			'id_news' => $id
-		)
-	);
-	return $query->result_array();
-}				
-
-public function addNews($title, $image, $resume, $rubrique, $section, $content, $status, $important, $type, $slug, $player, $game, $story, $team, $date, $author, $idplayer, $idteam1, $idteam2, $contract) {
+public function addNews($title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date, $author) {
 
 
 	$data = array(
@@ -362,42 +219,21 @@ public function addNews($title, $image, $resume, $rubrique, $section, $content, 
 		'status'   	 => $status,
 		'resume'     => $resume,
 		'rubrique'   => $rubrique,
-		'section'  	 => $section,
 		'content'    => $content,
 		'type_page'  => $type,
 		'slug'       => $slug,
 		'une'        => $important,
-		'story'        => $story,
-		'id_players'  => $player,
-		'id_matchs'   => $game,
-		'id_teams'    => $team,
 		'date'    	 => $date,
 		'author_id'     => $author,
 		'created_at' => date('Y-m-j H:i:s'),
 		'updated_at' => date('Y-m-j H:i:s')
 	);
 
-	$this->db->insert('posts', $data);
-
-    $id = $this->db->insert_id();
-
-    $data2 = array(
-        'id_news'  	 	=> $id,
-        'type_contract' => $contract,
-        'id_player'  	=> $idplayer,
-        'id_team'    	=> $idteam1,
-        'id_team2'    	=> $idteam2,
-        'created_at' 	=> date('Y-m-j H:i:s'),
-        'updated_at' 	=> date('Y-m-j H:i:s')
-    );
-
-    $this->db->insert('mercato', $data2);
-
-   return $id;
+	return $this->db->insert('posts', $data);
 }	
 
 
-public function editNews($id, $title, $image, $status, $resume, $rubrique, $content, $section, $type_page, $slug, $une, $story, $id_players, $id_matchs, $id_teams, $date, $author_id) {
+public function editNews($id, $title, $image, $status, $resume, $rubrique, $content, $type_page, $slug, $une, $date, $author_id) {
 	$data = array(
 		'id'   	     => $id,
 		'title'   	 => $title,
@@ -405,15 +241,10 @@ public function editNews($id, $title, $image, $status, $resume, $rubrique, $cont
 		'status'   	 => $status,
 		'resume'     => $resume,
 		'rubrique'   => $rubrique,
-		'section'  	 => $section,
 		'content'    => $content,
 		'type_page'  => $type_page,
 		'slug'       => $slug,
 		'une'        => $une,
-		'story'        => $story,
-		'id_players'  => $id_players,
-		'id_matchs'   => $id_matchs,
-		'id_teams'    => $id_teams,
 		'date'    	 => $date,
 		'author_id'    => $author_id,
         'updated_at' 	=> date('Y-m-j H:i:s')
@@ -422,7 +253,7 @@ public function editNews($id, $title, $image, $status, $resume, $rubrique, $cont
 	$this->db->where('id', $id);
     return $this->db->update('posts', $data);
 }
-    public function addMercatoEditNews($id, $title, $image, $resume, $rubrique, $section, $content, $status, $important, $type, $slug, $player, $game, $story, $team, $date, $author, $idplayer, $idteam1, $idteam2, $contract)
+    public function addMercatoEditNews($id, $title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date, $author)
     {
         $data = array(
             'id'   	     => $id,
@@ -431,52 +262,20 @@ public function editNews($id, $title, $image, $status, $resume, $rubrique, $cont
             'status'   	 => $status,
             'resume'     => $resume,
             'rubrique'   => $rubrique,
-            'section'  	 => $section,
             'content'    => $content,
             'type_page'  => $type,
             'slug'       => $slug,
             'une'        => $important,
-            'story'        => $story,
-            'id_players'  => $player,
-            'id_matchs'   => $game,
-            'id_teams'    => $team,
             'date'    	 => $date,
             'author_id'    => $author,
             'updated_at' 	=> date('Y-m-j H:i:s')
         );
 
-        $data2 = array(
-            'id_news'  	 	=> $id,
-            'type_contract' => $contract,
-            'id_player'  	=> $idplayer,
-            'id_team'    	=> $idteam1,
-            'id_team2'    	=> $idteam2,
-            'created_at' 	=> date('Y-m-j H:i:s'),
-            'updated_at' 	=> date('Y-m-j H:i:s')
-        );
-
-
         $this->db->where('id', $id);
-        $this->db->update('posts', $data);
 
-        return $this->db->insert('mercato', $data2);
+       return $this->db->update('posts', $data);
     }
 
-public function editMercato($id, $type_contract, $id_player, $id_team, $id_team2) {
-
-	$data = array(
-		'id_news'  	 	=> $id,
-		'type_contract' => $type_contract,
-		'id_player'  	=> $id_player,
-		'id_team'    	=> $id_team,
-		'id_team2'    	=> $id_team2,
-		'updated_at' 	=> date('Y-m-j H:i:s')
-	);
-
-	$this->db->where('id_news', $id);
-
-	return $this->db->update('mercato', $data);
-}
 
 
 public function addReplyTodoListNews($idpseudo, $comment, $idcomment) {
@@ -556,58 +355,6 @@ public function update_counter($slug) {
 	return $this->db->update('posts');
 }
 
-public function addStory($story, $resume, $slug) {
-
-	$data = array(
-		'name'   => $story,
-		'resume'   => $resume,
-		'slug'   => $slug,
-		'created_at' => time(),
-		'updated_at' => time()
-	);
-
-	return $this->db->insert('stories', $data);
-}
-
-public function editStory($id, $story, $resume, $slug) {
-
-	$data = array(
-		'name'   => $story,
-		'resume'   => $resume,
-		'slug'   => $slug
-	);
-
-	$this->db->where('id', $id);
-	return $this->db->update('stories', $data);
-}
-
-public function getStory($id)
-{
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get_where('stories',
-		array(
-			'id' => $id,
-		));
-	return $query->result_array();
-}
-
-public function getListStory()
-{
-	$this->db->where('isdelete', 0);
-	$query = $this->db->get('stories');
-	return $query->result_array();
-}
-
-public function get_list_news_story($story, $limit)
-{
-
-	$this->db->order_by("updated_at", "desc");
-	$query = $this->db->get_where('posts', array(
-		'story' => $story
-	), $limit);
-
-	return $query->result_array();
-}
 
 public function getListUsers()
 {

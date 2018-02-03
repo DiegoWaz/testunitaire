@@ -13,7 +13,6 @@ class News extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('date');
         $this->lastNews = $this->news_model->get_list_news(3);
-        $this->section = $this->conf_model->get_section();
         $this->today = date("d-m-Y", time());
         $this->yesterday = date('d-m-Y', time() - 3600 * 24);
         $this->tommorow = date('d-m-Y', time() + 3600 * 24);
@@ -38,8 +37,6 @@ class News extends CI_Controller {
         $data["lastNews"] = $this->news_model->get_list_news(3);
         $data['news'] = $this->news_model->get_news($slug);
         $data['une'] = $this->news_model->get_une_news($slug);
-
-        $data["list_sections"] = $this->news_model->get_ListSection();
         $data["list"] = $this->news_model->get_ListRubrique();
 
         foreach ($data["news"] as $article):
