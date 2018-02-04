@@ -9,7 +9,7 @@
         <h3>Liste des <span class="semi-bold">articles <?php if (isset($this->slug)): echo "(".$this->slug.")"; endif; ?>
         </span></h3>
         <div class="pull-right actions">
-            <a href="../news" class="btn btn-primary btn-cons">Ajouter un article</a>
+            <a href="<?php echo base_url(). ?>back/news" class="btn btn-primary btn-cons">Ajouter un article</a>
         </div>
     </div>
      <?php $this->view('back/notifications'); ?>
@@ -30,7 +30,7 @@
                 <div class="col-md-12 m-b-10">
                     <div class="widget-item ">
                         <div class="tiles green " style="height:320px">
-                            <img src="<?php echo $article["image"]; ?>" alt="">
+                            <img src="<?php echo base_url().$article["image"]; ?>" alt="">
                             <div class="tiles-body">
                                 <h4 class="m-b-30 m-r-20"><a class="text-white" href="editNews/<?php echo $article["id"]; ?>"><?php echo $nameRubrique." : ".$article["title"]; ?></a></h4>
                             </div>

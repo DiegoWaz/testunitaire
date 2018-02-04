@@ -84,7 +84,7 @@ class Back extends CI_Controller {
 		$data["list_news"] = $this->news_model->get_list_news(0);
 		$data["list"] = $this->news_model->get_ListRubrique();
 		
-		$this->load->view('back/listnews', $data);
+		$this->load->view('back/index', $data);
 	}
 
 	public function rubriqueList()
@@ -169,7 +169,7 @@ class Back extends CI_Controller {
 
 		$data["list_news"] = $this->news_model->get_oneRubrique($id, 0);
 
-		$this->load->view('back/listnews', $data);
+		$this->load->view('back/index', $data);
 	}
 
 	public function editRubrique($id)
@@ -228,21 +228,6 @@ class Back extends CI_Controller {
 
 		$this->load->view('back/list', $data);
 	}
-
-	public function formValidTodoList()
-	{
-
-		$title = $this->input->post("title");
-		$link = $this->input->post("link");
-		$comment = $this->input->post("comment");
-		$idPseudo = $this->input->post("id_pseudo");
-		$important = $this->input->post("important");
-
-		$data["insert"] = $this->news_model->addTodoListNews($idPseudo, $title, 0, $link, $comment, $important);
-
-		$this->load->view('back/formNews', $data);
-
-	}		
 
 	public function formValidaddNews()
 	{
