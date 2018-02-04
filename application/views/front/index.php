@@ -5,7 +5,7 @@
 			foreach ($une as $articleUne):
                 ?>
 				<li>
-					<img src="<?php echo $articleUne["image"]; ?>" alt="<?php echo $articleUne["title"]; ?>" />
+					<img src="<?php echo base_url().$articleUne["image"]; ?>" alt="<?php echo $articleUne["title"]; ?>" />
 					<div class="container">
 						<div class="kode-caption">       
 							<h1>
@@ -121,7 +121,7 @@
 						?>
 						<li class="col-md-4">
 							<div class="kode-time-zoon"></div>
-							<figure><a href="#"><img src="<?php echo $contenue["image"]; ?>" alt=""></a></figure>
+							<figure><a href="#"><img src="<?php echo base_url().$contenue["image"]; ?>" alt=""></a></figure>
 							<div class="kode-blog-info">
 								<time datetime="<?php echo $contenue["updated_at"]; ?>">
 									<?php
