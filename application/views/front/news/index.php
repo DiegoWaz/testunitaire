@@ -70,13 +70,6 @@
                             <strong><?php echo $resume; ?></strong>
                             <p><?php echo $content; ?></p>
                         </div>
-                        <div class="kode-admin-post">
-                            <figure><a href="#"><img src="<?php echo base_url()."assets/images/users/neymar.jpg"; ?>" alt=""></a></figure>
-                            <div class="admin-info">
-                                <p>Etudiant développeur full-stack, Rédacteur et recruteur pour Le Meilleur du PSG</p>
-                                <h4><a href="#" class="thcolor">Diego Waziri</a> <span class="thcolor">Administrateur</span></h4>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="kode-postsection">
