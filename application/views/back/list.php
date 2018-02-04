@@ -111,7 +111,6 @@
                             <tr class="">
                                 <th style="width:9%">Nom</th>
                                 <th style="width:22%">Slug</th>
-                                <th style="width:6%">Editer</th>
                                 <th style="width:6%">Supprimer</th>
                             </tr>
                         </thead>
@@ -125,9 +124,6 @@
                                 </td>
                                 <td class="v-align-middle">
                                     <span class="muted"><?php echo $value['slug']; ?></span>
-                                </td>
-                                <td>
-                                    <a href="<?php echo base_url().'back/edit'.ucfirst($type).'/'.$value["id"]; ?>"><span class="muted"><i class="fa fa-edit"></i> Editer </span></a>
                                 </td>
                                 <td>
                                     <a href="javascript:;" onclick='Confirm("<?php echo $value["id"]; ?>", "<?php echo "".$type.""; ?>", "<?php echo "".$value["name"]."" ?>");' >

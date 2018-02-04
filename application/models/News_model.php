@@ -194,24 +194,8 @@ public function decode_post($text)
 	return $text;
 }
 
-public function addTodoListNews($idpseudo, $title, $status, $link, $comment, $important) {
-
-	$data = array(
-		'id_pseudo'   => $idpseudo,
-		'title'   	 => $title,
-		'status'   	 => $status,
-		'link'      => $link,
-		'comment'      => $comment,
-		'important'      => $important,
-		'created_at' => date('Y-m-j H:i:s'),
-		'updated_at' => date('Y-m-j H:i:s')
-	);
-	return $this->db->insert('todoListNews', $data);
-}	
 		
-
-public function addNews($title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date, $author) {
-
+public function addNews($title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date) {
 
 	$data = array(
 		'title'   	 => $title,
@@ -224,7 +208,6 @@ public function addNews($title, $image, $resume, $rubrique, $content, $status, $
 		'slug'       => $slug,
 		'une'        => $important,
 		'date'    	 => $date,
-		'author_id'     => $author,
 		'created_at' => date('Y-m-j H:i:s'),
 		'updated_at' => date('Y-m-j H:i:s')
 	);
@@ -233,7 +216,8 @@ public function addNews($title, $image, $resume, $rubrique, $content, $status, $
 }	
 
 
-public function editNews($id, $title, $image, $status, $resume, $rubrique, $content, $type_page, $slug, $une, $date, $author_id) {
+public function editNews($id, $title, $image, $status, $resume, $rubrique, $content, $type_page, $slug, $une, $date) {
+
 	$data = array(
 		'id'   	     => $id,
 		'title'   	 => $title,
@@ -246,94 +230,11 @@ public function editNews($id, $title, $image, $status, $resume, $rubrique, $cont
 		'slug'       => $slug,
 		'une'        => $une,
 		'date'    	 => $date,
-		'author_id'    => $author_id,
         'updated_at' 	=> date('Y-m-j H:i:s')
 	);
 
 	$this->db->where('id', $id);
     return $this->db->update('posts', $data);
-}
-    public function addMercatoEditNews($id, $title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date, $author)
-    {
-        $data = array(
-            'id'   	     => $id,
-            'title'   	 => $title,
-            'image'   	 => $image,
-            'status'   	 => $status,
-            'resume'     => $resume,
-            'rubrique'   => $rubrique,
-            'content'    => $content,
-            'type_page'  => $type,
-            'slug'       => $slug,
-            'une'        => $important,
-            'date'    	 => $date,
-            'author_id'    => $author,
-            'updated_at' 	=> date('Y-m-j H:i:s')
-        );
-
-        $this->db->where('id', $id);
-
-       return $this->db->update('posts', $data);
-    }
-
-
-
-public function addReplyTodoListNews($idpseudo, $comment, $idcomment) {
-
-	$data = array(
-		'id_comment'   => $idcomment,
-		'id_pseudo'    => $idpseudo,
-		'replycomment'  => $comment,
-		'date'          => time(),
-		'created_at'    => date('Y-m-j H:i:s'),
-		'updated_at'    => date('Y-m-j H:i:s')
-	);
-	return $this->db->insert('todoListNews_Reply', $data);
-}
-
-public function updateTodoListNews($id, $idpseudo, $title, $status, $link, $comment, $important) {
-
-	$data = array(
-		'id_pseudo_write' => $idpseudo,
-		'title'   	 	  => $title,
-		'status'   	 	  => $status,
-		'link'      	  => $link,
-		'comment'      	  => $comment,
-		'important'       => $important,
-        'date'            => time(),
-        'updated_at'      => date('Y-m-j H:i:s')
-	);
-
-	$this->db->where('id', $id);
-	return $this->db->update('todoListNews', $data);
-}
-
-public function updateValid($id, $idpseudo, $status) {
-
-	$data = array(
-		'id_pseudo_write' => $idpseudo,
-		'status' 		  => $status,
-		'updated_at'	  => date('Y-m-j H:i:s'),
-	);
-
-	$this->db->where('id', $id);
-	return $this->db->update('todoListNews', $data);
-}
-
-public function get_todolist($status, $limit)
-{
-	$this->db->order_by("updated_at", "desc");
-	$query = $this->db->get_where('todoListNews', array(
-		'status' => $status
-	), $limit);
-
-	return $query->result_array();
-}		
-
-public function get_replytodolist($id)
-{
-	$query = $this->db->get_where('todoListNews_reply', array('id_comment' => $id));
-	return $query->result_array();
 }
 
 public function slug($slug)
@@ -358,8 +259,7 @@ public function update_counter($slug) {
 
 public function getListUsers()
 {
-	$this->db->where('is_deleted', 0);
-	$query = $this->db->get('lmd_users');
+	$query = $this->db->get('users');
 
 	return $query->result_array();
 }

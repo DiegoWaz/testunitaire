@@ -25,7 +25,6 @@
     <div class="page-content">
         <?php echo $output; ?>
     </div>
-    <?php $this->view('back/chat'); ?>
 </div>
 
 <?php foreach ($dependenciesJS as $depJS): ?>

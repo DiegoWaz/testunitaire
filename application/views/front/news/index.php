@@ -39,13 +39,7 @@
                                                     </time>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><i class="fa fa-heart"></i>5 j'aime</a>
-                                                </li>
-                                                <li>
                                                     <i class="fa fa-eye"></i> <?php echo $views; ?> vues
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-warning"></i>Signaler une erreur</a>
                                                 </li>
                                             </ul>
                                             <ul class="kode-team-network">

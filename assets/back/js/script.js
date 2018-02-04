@@ -8,8 +8,10 @@ function Confirm(id, table, nom)
         var tab = table;
     }
 
-	var host = 'http://' + window.location.href.split('/')[2] + '/' + window.location.href.split('/')[3] + '/';
+	var host = 'http://' + window.location.href.split('/')[2] + '/' + window.location.href.split('/')[3] + '/back/';
 
+	console.log(host);
+	
     if (confirm("Es-tu sûr de vouloir supprimer le champ : "+ nom + " de la " + table + " ?")) {
          location.href = host + 'deleteForm/'+tab+'/'+id+'';
     }

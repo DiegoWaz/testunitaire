@@ -127,28 +127,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Auteur de publication</label>
-                                <div class="controls">
-                                    <select name="author_id[]" id="users" style="width:100%" multiple>
-                                        <?php 
-                                        foreach ($users as $user):
-                                        ?>
-                                            <option
-                                                <?php
-                                                if($type == "edit"):
-                                                    foreach ($postUser as $value):
-                                                        $us = ($user["id"] == $value) ? "selected='selected'" : ""; echo $us;
-                                                    endforeach;
-                                                endif;
-                                                ?>
-                                            value="<?php echo $user["id"]; ?>"><?php echo $user["username"]; ?></option>
-                                        <?php
-                                        endforeach;
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="form-label">Article en une</label>
                                 <div class="row-fluid">
                                     <div class="slide-primary">

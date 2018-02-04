@@ -127,21 +127,6 @@ class Back extends CI_Controller {
 		        'value'   		=> '0',
 		);
 
-		$data['status'] = $this->status = array(
-		    'wip',
-		    'todo',
-		    'close'
-		);
-
-		// A faire
-		$data["todo"] = $this->news_model->get_todolist(0, 20);
-
-		// Work In Progress | En cours
-		$data["wip"] = $this->news_model->get_todolist(1, 20);
-
-		// Fini
-		$data["close"] = $this->news_model->get_todolist(2, 20);
-
 		$this->load->view('back/index', $data);
 	}
 
@@ -293,6 +278,9 @@ class Back extends CI_Controller {
 
 		$data["rubrique"] = $this->news_model->get_oneRubrique($id);
 
+		var_dump($data["rubrique"]);
+		die;
+
 		foreach ($data["rubrique"] as $value) {
 			$id = $value["id"];
 			$rubrique = $value["name"];
@@ -327,7 +315,7 @@ class Back extends CI_Controller {
 
 		$data["insert"] = $this->news_model->addTodoListNews($idPseudo, $title, 0, $link, $comment, $important);
 
-		$this->load->view('back/formValid', $data);
+		$this->load->view('back/formNews', $data);
 
 	}		
 
@@ -346,25 +334,15 @@ class Back extends CI_Controller {
 		$status = $this->input->post("status");
 		$day = $this->input->post("date");
 		$hour = $this->input->post("time");
-		$author = $this->input->post("users");
         $date = strtotime($day.$hour);
-		$todolist = $this->input->post("todolist");
 		$idPseudo = 2;
 		$important = 1;
 		$image = "newsdefault.jpg";
 		$slug = convert_accented_characters(url_title($title));
 		$type = "Article";
 		$id = $this->input->post("idcomment");
-		$st = 2;
 
-		if(isset($authors)){
-			$author = implode(', ', $authors);
-		} else {
-			$author = false;
-		}
-
-        $data["insert"] = $this->news_model->addNews($title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date, $author);
-		$data["changestatus"] = $this->news_model->updateValid($id, $idPseudo, $st);
+        $data["insert"] = $this->news_model->addNews($title, $image, $resume, $rubrique, $content, $status, $important, $type, $slug, $date);
 
         $this->session->set_flashdata('success', "L'article a bien été ajouté");
 		$this->load->view('back/formNews', $data);
@@ -398,13 +376,7 @@ class Back extends CI_Controller {
 			$une = 0;
 		endif;
 
-		if(isset($author_id)){
-			$author_id = implode(', ', $author_id);
-		} else {
-			$author_id = 0;
-		}
-
-		$data["update"] = $this->news_model->addMercatoEditNews($id, $title, $image, $resume, $rubrique, $content, $status, $une, $type_page, $slug, $date);
+		$data["update"] = $this->news_model->editNews($id, $title, $image, $status, $resume, $rubrique, $content, $type_page, $slug, $une, $date);
 
         $this->session->set_flashdata('success', "L'article a bien été edité");
 
@@ -523,10 +495,6 @@ class Back extends CI_Controller {
 		$data['rubrique'] = $this->news_model->get_listRubrique();
 		$data["users"] = $this->news_model->getListUsers();
         $data['postUsers'] = $this->news_model->getPostUser($id);
-
-		if(isset($idcomment)) {
-			$data["update"] = $this->news_model->updateValid($idcomment, $idpseudo, 1);
-		}
 
 		$data["idcomment"] = $this->input->post("id_comment");
 

@@ -23,19 +23,8 @@
                         <a href="<?php echo base_url(); ?>back/Listnews">Liste des articles</a>
                     <li>
                         <a href="<?php echo base_url(); ?>back/rubriqueList">Liste des rubriques</a>
-                </ul> 
-            <li>
-                <a href="#"><i class="fa fa-cog"></i> <span class="title">Site</span></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="">Configuration</a>
-                    <li>
-                        <a href="">Menu</a>
-                    <li>
-                        <a href="">Publicité</a>
-                    <li>
-                        <a href="">Traduction</a>
                 </ul>
+            </li>
         </ul>
         <div class="clearfix"></div>
     </div>
