@@ -29,7 +29,7 @@
                                             <h1><?php echo $title; ?></h1>
                                         </div>
                                         <figure>
-                                            <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
+                                            <img src="<?php echo base_url().$image; ?>" alt="<?php echo $title; ?>">
                                         </figure>
                                         <div class="kode-blog-info">
                                             <ul class="kode-blog-options">

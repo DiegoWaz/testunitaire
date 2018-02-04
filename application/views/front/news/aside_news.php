@@ -15,7 +15,7 @@
         <li>
             <figure>
                 <a class="kode-recent-thumb" href="<?php echo base_url(); ?>news/view/<?php echo $article["slug"]; ?>">
-                    <img src="<?php echo $article["image"]; ?>" alt="<?php echo $article["title"]; ?>">
+                    <img src="<?php echo base_url().$article["image"]; ?>" alt="<?php echo $article["title"]; ?>">
                 </a>
                 <figcaption>
                 <h3> 
