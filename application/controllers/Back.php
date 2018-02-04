@@ -84,7 +84,7 @@ class Back extends CI_Controller {
 		$data["list_news"] = $this->news_model->get_list_news(0);
 		$data["list"] = $this->news_model->get_ListRubrique();
 		
-		$this->load->view('back/index', $data);
+		$this->load->view('back/listnews', $data);
 	}
 
 	public function rubriqueList()
