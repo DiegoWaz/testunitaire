@@ -20,7 +20,7 @@
                 <a href="javascript:;"> <i class="fa fa-newspaper-o"></i> <span class="title">News</span></a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="<?php echo base_url(); ?>back/Listnews">Liste des articles</a>
+                        <a href="<?php echo base_url(); ?>back/index">Liste des articles</a>
                     <li>
                         <a href="<?php echo base_url(); ?>back/rubriqueList">Liste des rubriques</a>
                 </ul>

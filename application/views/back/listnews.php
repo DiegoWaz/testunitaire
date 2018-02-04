@@ -9,7 +9,7 @@
         <h3>Liste des <span class="semi-bold">articles <?php if (isset($this->slug)): echo "(".$this->slug.")"; endif; ?>
         </span></h3>
         <div class="pull-right actions">
-            <a href="news" class="btn btn-primary btn-cons">Ajouter un article</a>
+            <a href="../news" class="btn btn-primary btn-cons">Ajouter un article</a>
         </div>
     </div>
      <?php $this->view('back/notifications'); ?>
