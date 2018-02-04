@@ -54,7 +54,7 @@
 									<div class="kode-time-zoon"></div>
 									<figure>
 										<a href="<?php echo base_url(); ?>news/view/<?php echo $news["slug"]; ?>">
-											<img src="<?php echo $news["image"]; ?>" alt="<?php echo $news["title"]; ?>">
+											<img src="<?php echo base_url().$news["image"]; ?>" alt="<?php echo $news["title"]; ?>">
 										</a>
 									</figure>
 									<div class="kode-blog-info">
