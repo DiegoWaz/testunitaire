@@ -38,14 +38,6 @@
                         <div class="tiles white">
                             <div class="tiles-body">
                                 <div class="row">
-                                    <div class="user-comment-wrapper pull-left">
-                                        <div class="profile-wrapper"> <img src="<?php echo base_url(); ?>assets/back/img/profiles/avatar_small.jpg" alt="" data-src="<?php echo base_url(); ?>assets/back/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url(); ?>assets/back/img/profiles/avatar_small2x.jpg" width="35" height="35"> </div>
-                                        <div class="comment">
-                                            <div class="user-name text-black bold"> Diego <span class="semi-bold">Waziri</span> </div>
-                                            <div class="preview-wrapper">@diegowaz75 </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
                                     <div class="pull-right m-r-20">Date de publication : <span class="bold text-black small-text">
                                         <?php
 
