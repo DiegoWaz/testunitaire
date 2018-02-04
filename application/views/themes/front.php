@@ -13,7 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php foreach (glob("assets/front/css/*.css") as $css): ?>
 <link href="<?php echo base_url().$css; ?>" rel="stylesheet">
     <?php endforeach; ?>
-    <?php $this->view('front/widget/meta'); ?>
     <!-- Rich snippet -->
     <?php $this->view('front/widget/richsnippet'); ?>
 </head>
