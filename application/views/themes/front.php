@@ -67,7 +67,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </ul>
                                 </li>
                             <?php endif; ?>
-                            <li><a href="#"><i class="fa fa-question"></i> Suggestions</a></li>
                         </ul>
                     </div>
                 </div>
