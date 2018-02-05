@@ -85,7 +85,7 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-12">
-                                            <div class="btn btn-primary" id="popup-1-button" value="<?php echo $image; ?>" />
+                                            <div class="btn btn-primary" id="popup-1-button" value="<?php echo "test".$image; ?>" />
                                             Upload image
                                             </div>
                                         </div>
