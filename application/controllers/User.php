@@ -67,31 +67,8 @@ class User extends CI_Controller {
 			$username = $this->input->post('username');
 			$email    = $this->input->post('email');
 			$password = $this->input->post('password');
-			
-			if ($this->user_model->create_user($username, $email, $password)) {
-				
-				// user creation ok
 
-				$this->email->set_newline("\r\n");
-				$this->email->from('contact@lemeilleurdupsg.com', 'Le Meilleur du PSG');
-				$this->email->to($email);
-				// $this->email->cc('diegowaz75@gmail.com');
-				// $this->email->bcc('dwaziri@activbrowser.com');
-				$this->email->subject('Confirmation d\'inscription');
-				$this->email->message('Nous vous confirmons l\'inscription au site Le Meilleur du PSG');
-				$this->email->send();
-
-				$this->load->view('user/register/register_success', $data);
-				
-			} else {
-				
-				// user creation failed, this should never happen
-				$data->error = 'There was a problem creating your new account. Please try again.';
-				
-				// send error to the view
-
-				$this->load->view('user/register/register', $data);
-			}
+			$this->load->view('user/register/register_success', $data);
 			
 		}
 		
